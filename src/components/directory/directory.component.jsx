@@ -33,6 +33,7 @@ class Directory extends Component {
                   size: 'large',
                   id: 4,
                   linkUrl: 'shop/womens',
+                  // eslint-disable-next-line no-dupe-keys
                   size: 'large'
                 },
                 {
@@ -41,6 +42,7 @@ class Directory extends Component {
                   size: 'large',
                   id: 5,
                   linkUrl: 'shop/mens',
+                  // eslint-disable-next-line no-dupe-keys
                   size: 'large'
                 }
               ]
