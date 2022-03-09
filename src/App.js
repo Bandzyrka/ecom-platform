@@ -5,14 +5,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
-
-const PlaceHoldPage = () =>(
-  <div>
-    <h1>
-      PlaceHoldPage
-    </h1>
-  </div>
-)
+import ShopPage from './pages/shop-page/shop-page.component.jsx'
 
 function App() {
   return (
@@ -20,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Switch> 
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/placeholder" component={PlaceHoldPage} /> 
+        <Route exact path="/shop" component={ShopPage} /> 
       </Switch>
     </BrowserRouter>
     </div>
