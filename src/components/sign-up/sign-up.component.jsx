@@ -18,7 +18,7 @@ class SignUp extends Component {
         event.preventDefault()
         const {displayName, password, email, confirmPassword} = this.state;
         
-        if(password != confirmPassword){
+        if(password !== confirmPassword){
             alert('Passwords dont match');
             return;    
         }
