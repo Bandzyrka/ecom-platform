@@ -3,10 +3,17 @@ import './collection.styles.scss'
 import {connect} from 'react-redux';
 import {shopSelectCollection} from '../../redux/shop/shop.selectors'
 
+import CollectionItem from '../../components/collection-item/collection-item.components'
 
-const CollectionPage = ({ match, collection }) => (
+
+const CollectionPage = ({ match, collection: {title, items} }) => (
     <div className="collection-page">
-     <h1>Category {collection.title}</h1>
+        <div className="title">{title}</div>
+        <div className="items"> 
+            {
+            items.map(item => <CollectionItem key={item.id} item={item}/>)
+            }
+        </div>
     </div>
 )
 
