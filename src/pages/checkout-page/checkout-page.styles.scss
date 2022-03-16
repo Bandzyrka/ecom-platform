@@ -28,5 +28,20 @@
       margin-left: auto;
       font-size: 36px;
     }
+    .test-warning {
+      margin: 20px 10px;
+      text-align: center;
+      color: red;
+    }
+    .StripeCheckout {
+      margin: 20px 0;
+      align-self: flex-end;
+      transition: 2ms;
+    &:hover{
+      transform: scale(1.05);
+      transition: 0.2s
+    }
+    
+    }
   }
   
