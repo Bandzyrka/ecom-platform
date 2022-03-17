@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import CartIcon from '../shopping-icon/shopping-icon.compnent'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv} from './header.styles.jsx'
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles.jsx'
 
 const Header = ({currentUser, hidden}) => ( 
     <HeaderContainer>
@@ -18,7 +18,7 @@ const Header = ({currentUser, hidden}) => (
             <OptionLink to='/'> CONTACT </OptionLink>
             {
                 currentUser ?
-                <OptionDiv onClick={() => auth.signOut()}> SIGN OUT </OptionDiv> 
+                <OptionLink as='div' onClick={() => auth.signOut()}> SIGN OUT </OptionLink> 
                 :
                 <OptionLink to='/signin'> SIGN IN </OptionLink> 
             }
