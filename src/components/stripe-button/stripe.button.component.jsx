@@ -12,7 +12,6 @@ const onToken = token => {
     
     return (
         <StripeCheckout 
-            classNam    e='stripe-button'
             label = 'Pay Now &#x1F4B3;'
             name = 'E-comerce platform'
             billingAddress
