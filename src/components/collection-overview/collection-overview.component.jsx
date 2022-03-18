@@ -4,21 +4,20 @@ import { shopSelectCollectionsForPreview } from '../../redux/shop/shop.selectors
 import { connect } from 'react-redux';
 
 import CollectionPreview from '../../components/collection-preview/collection-preview.component'
-
+import { CollectionOverviewContainer } from './collection-overview.styles.jsx';
 
 
 const CollectionOverview = ({ collections }) =>{
  
     return(
-    <div className="collection-overview">
+    <CollectionOverviewContainer>
     {
         collections.map(({id, ...otherSectionProps}) =>
         (
             <CollectionPreview key={id} {...otherSectionProps} />
         ))
     }
-    </div>
-    
+    </CollectionOverviewContainer>
     )
 }
 
