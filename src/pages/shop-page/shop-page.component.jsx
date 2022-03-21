@@ -1,22 +1,13 @@
 import React from 'react';
 
-import CollectionOverview from '../../components/collection-overview/collection-overview.component'
-import CollectionPage from '../collection/collection.component'
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchCollectionStartAsync } from '../../redux/shop/shop.actions'
 
 import {ShopPageContainer} from './shop-page.component.styles'
 
-import { Route } from 'react-router-dom';
-
-import { connect } from 'react-redux';
-import { fetchCollectionStartAsync } from '../../redux/shop/shop.actions'
-import { selectIsCollectionFetching, selectIsCollectionLoading } from '../../redux/shop/shop.selectors'
-
-import { createStructuredSelector } from 'reselect'
-
-import WithSpinner from '../../components/with-spinner/with-spinner.component'
-
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionOverview);
-const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+import {CollectionPageContainer} from '../../pages/collection/collection.container'
+import {CollectionOverviewContainer}  from '../../components/collection-overview/collection-overview.container'
 
 class ShopPage extends React.Component {
     unSubscribeFromSnapShot = null;
@@ -25,15 +16,17 @@ class ShopPage extends React.Component {
         fetchCollectionStartAsync()
         }
     render(){
-        const { match, isCollectionFetching, isCollectionLoaded } = this.props;
+        const { match } = this.props;
         return (
             <ShopPageContainer>
                 <Route 
-                exact path={`${match.path}`} 
-                render={props => <CollectionsOverviewWithSpinner isLoading={isCollectionFetching} {...props}/>}/>
+                    exact path={`${match.path}`} 
+                    component={CollectionOverviewContainer}
+                />
                 <Route  
                     path={`${match.path}/:collectionId`} 
-                    render={props => <CollectionPageWithSpinner isLoading={!isCollectionLoaded} {...props} />} />
+                    component={CollectionPageContainer}
+                />
             </ShopPageContainer>
         )
     }
@@ -41,9 +34,5 @@ class ShopPage extends React.Component {
 const mapDispatchToProps = dispatch => ({
    fetchCollectionStartAsync: () => dispatch(fetchCollectionStartAsync())
 })
-const mapStateToProps = createStructuredSelector({
-    isCollectionFetching: selectIsCollectionFetching,
-    isCollectionLoaded: selectIsCollectionLoading
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ShopPage)
+export default connect(null, mapDispatchToProps)(ShopPage)
 
