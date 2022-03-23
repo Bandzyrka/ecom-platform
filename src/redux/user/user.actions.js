@@ -1,20 +1,37 @@
-import userActionTypes from "./user.types"
+import UserActionTypes from './user.types';
 
-export const signInWithGoogleStart = ({
-    type: userActionTypes.SIGN_IN_WITH_GOOGLE_START
-})
+export const googleSignInStart = () => ({
+  type: UserActionTypes.GOOGLE_SIGN_IN_START
+});
 
-export const signInSucces = user => ({
-    type: userActionTypes.SIGN_IN_SUCCESS,
-    payload: user
-})
+export const signInSuccess = user => ({
+  type: UserActionTypes.SIGN_IN_SUCCESS,
+  payload: user
+});
 
 export const signInFailure = error => ({
-    type: userActionTypes.SIGN_IN_FAILURE,
-    payload: error
-})
+  type: UserActionTypes.SIGN_IN_FAILURE,
+  payload: error
+});
 
-export const signInWithEmailStart = emailAndPassword => ({
-    type: userActionTypes.SIGN_IN_WITH_EMAIL_START,
-    payload: emailAndPassword,
-})
+export const emailSignInStart = emailAndPassword => ({
+  type: UserActionTypes.EMAIL_SIGN_IN_START,
+  payload: emailAndPassword
+});
+
+export const checkUserSession = () => ({
+  type: UserActionTypes.CHECK_USER_SESSION
+});
+
+export const signOutStart = () => ({
+  type: UserActionTypes.SIGN_OUT_START
+});
+
+export const signOutSuccess = () => ({
+  type: UserActionTypes.SIGN_OUT_SUCCESS
+});
+
+export const signOutFailure = error => ({
+  type: UserActionTypes.SIGN_OUT_FAILURE,
+  payload: error
+});

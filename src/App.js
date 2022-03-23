@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { createStructuredSelector } from 'reselect'
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
@@ -12,17 +13,19 @@ import Header from './components/header/header.component'
 import SignInAndSignUp from './pages/sign-in-and-sing-up/sign-in-and-sign-up.component';
 import { connect } from 'react-redux'
 
-import { createStructuredSelector } from 'reselect'
-import { selectCurrentUser } from './redux/user/user.selectors'
-
+import { selectCurrentUser } from './redux/user/user.selectors';
+import { checkUserSession } from './redux/user/user.actions';
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentUser: null
-    }
-  }  
-  
+  unsubscribeFromAuth = null;
+
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
   render(){
     return (
       <div> 
@@ -38,11 +41,14 @@ class App extends React.Component {
   }
 } 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
+  currentUser: selectCurrentUser
+});
 
-})
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
 
-
-
-export default connect(mapStateToProps)(App);
-  
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
