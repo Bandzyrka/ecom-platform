@@ -32,8 +32,8 @@ class SignIn extends Component {
         const { googleSignInStart } = this.props
         return (
             <SignInContainer>
-                <h2 className="title"> Create a new account</h2>
-                <span className="subtitle"> Use your email and password to sing in</span>
+                <h2 className="title"> I have a account</h2>
+                <span className="subtitle"> Use your email and password to sign in</span>
                     <form onSubmit={this.handleSubmit}>
                         <FormInput
                             type="email"  

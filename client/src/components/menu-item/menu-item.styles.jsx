@@ -30,6 +30,10 @@ export const MenuItemContainer = styled.div`
     &:last-child {
       margin-left: 7.5px;
     }
+    
+    @media screen and (max-width: 800px) {
+        height: 200px;
+    }
     `
 export const BackgroundImageContainer = styled.div`
       width: 100%;
@@ -41,8 +45,8 @@ export const BackgroundImageContainer = styled.div`
 
   
 export const ConentContainer = styled.div`
-      height: 90px;
-      padding: 0 25px;
+      height: 80px;
+      padding: 0 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -55,7 +59,7 @@ export const ConentContainer = styled.div`
 export const TitleContainer = styled.h1`
       font-weight: bold;
       margin-bottom: 6px;
-      font-size: 25px;
+      font-size: 20px;
       color: black;
       `
       

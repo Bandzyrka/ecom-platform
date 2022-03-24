@@ -18,7 +18,7 @@ export const CustomButtonContainer = styled.button`
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
-  padding: 0 25px 0 25px;
+  padding: 0 35px 0 35px;
   font-size: 15px;
   text-transform: uppercase;
   font-weight: bolder;
@@ -27,7 +27,9 @@ export const CustomButtonContainer = styled.button`
   display: flex;
   justify-content: center;
   ${getButtonStyles}
-  
+  @media screen and (max-width: 800px) {
+    padding: 0 15px;
+  }
   &:active{
     top: 2px;
   }
@@ -40,6 +42,9 @@ const googleButtonStyle = css`
     background-color: #357ae8;
     border: none;
   }
+  @media screen and (max-width: 800px) {
+    padding: 0 15px;
+  }
 `
 const invertedButtonStyle = css`
   background-color: white;
@@ -51,6 +56,7 @@ const invertedButtonStyle = css`
     color: white;
     border: none;
   }
+  
 `
 const defaultButtonStyle = css`
   background-color: black;

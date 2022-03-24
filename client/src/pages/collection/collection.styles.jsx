@@ -13,9 +13,13 @@ export const CollectionTitle = styled.div`
 export const CollectionItemsContainer = styled.div`
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-gap: 10px;
+      grid-gap: 20px;
+      margin: 0 auto;
   
       & .collection-item {
         margin-bottom: 30px;
       }
+      @media screen and (max-width: 800px){
+        grid-template-columns: 1fr 1fr;
+    }
 `

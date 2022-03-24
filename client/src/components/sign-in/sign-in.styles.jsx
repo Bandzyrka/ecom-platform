@@ -7,5 +7,9 @@ export const ButtonsContainer = styled.div`
     width: 100%;
     display: flex;
     gap: 20px; 
+    @media screen and (max-width: 800px) {
+        width: 90%;
+        gap: 5px;
+    }
 `
         
