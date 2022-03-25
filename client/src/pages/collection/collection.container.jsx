@@ -8,8 +8,8 @@ import { selectIsCollectionLoaded } from '../../redux/shop/shop.selectors'
 const mapStateToProps = createStructuredSelector({
     isLoading: state => !selectIsCollectionLoaded(state)
 });
-
-export const CollectionPageContainer = compose(
+const CollectionPageContainer = compose(
     connect(mapStateToProps),
     WithSpinner
 )(CollectionPage)
+export default CollectionPageContainer
