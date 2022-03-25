@@ -7,7 +7,7 @@ import { fetchCollectionsStart } from '../../redux/shop/shop.actions'
 import {ShopPageContainer} from './shop-page.component.styles'
 
 import Spinner from '../../components/spinner/spinner.component'
-
+import ErrorBoundary from '../../components/error-boundary/error-boundary.component'
 const CollectionPageContainer = lazy(() => import('../../pages/collection/collection.container'))
 const CollectionOverviewContainer = lazy(() => import('../../components/collection-overview/collection-overview.container'))
 
@@ -21,16 +21,18 @@ class ShopPage extends React.Component {
         const { match } = this.props;
         return (
             <ShopPageContainer>
-            <Suspense fallback={ <Spinner />}> 
-                <Route 
-                    exact path={`${match.path}`} 
-                    component={CollectionOverviewContainer}
-                />
-                <Route  
-                    path={`${match.path}/:collectionId`} 
-                    component={CollectionPageContainer}
-                />
-            </Suspense>
+            <ErrorBoundary>
+                <Suspense fallback={ <Spinner />}> 
+                    <Route 
+                        exact path={`${match.path}`} 
+                        component={CollectionOverviewContainer}
+                    />
+                    <Route  
+                        path={`${match.path}/:collectionId`} 
+                        component={CollectionPageContainer}
+                    />
+                </Suspense>
+            </ErrorBoundary>
             </ShopPageContainer>
         )
     }
