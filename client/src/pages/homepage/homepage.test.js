@@ -4,4 +4,4 @@ import HomePage from './homepage.component';
 
 it('should render Homepage component', () => {
   expect(shallow(<HomePage />)).toMatchSnapshot();
-});
+});   
