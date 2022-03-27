@@ -11,7 +11,7 @@ import {
     PriceContainer
   } from './collection-item.styles.jsx';
 
-const CollectionItem = ({item, addItem}) => {
+export const CollectionItem = ({item, addItem}) => {
     const {id, imageUrl, name, price} = item;
     
     return (
