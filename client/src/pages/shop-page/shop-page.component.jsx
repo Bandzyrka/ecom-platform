@@ -11,7 +11,7 @@ import ErrorBoundary from '../../components/error-boundary/error-boundary.compon
 const CollectionPageContainer = lazy(() => import('../../pages/collection/collection.container'))
 const CollectionOverviewContainer = lazy(() => import('../../components/collection-overview/collection-overview.container'))
 
-class ShopPage extends React.Component {
+export class ShopPage extends React.Component {
     unSubscribeFromSnapShot = null;
     componentDidMount() {
         const { fetchCollectionsStart } = this.props
