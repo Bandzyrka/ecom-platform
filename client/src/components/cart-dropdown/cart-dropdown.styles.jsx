@@ -36,11 +36,14 @@ export const CartDropdownItems = styled.div`
 
 export const CheckoutButton = styled(CustomButton)`
   margin-top: auto;
-`
+  `
+CheckoutButton.displayName = 'CartDropdownButton';
+
 export const EmptyMessage = styled.span`  
   font-size: 20px;
   margin: auto;
 `
+EmptyMessage.displayName = 'EmptyMessageContainer';
 
 
   

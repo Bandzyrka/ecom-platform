@@ -10,7 +10,7 @@ import CartItem from '../cart-item/cart-item.component'
 import {CartDropdownContainer, CartDropdownItems, CheckoutButton, EmptyMessage} from './cart-dropdown.styles.jsx'
 
 
-const CartDropdown = ({ cartItems, history, dispatch }) =>
+export const CartDropdown = ({ cartItems, history, dispatch }) =>
 (
     <CartDropdownContainer>
         {

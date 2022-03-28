@@ -3,7 +3,7 @@ import React from 'react'
 import {CartItemContainer, ItemDetailsContainer} from './cart-item.styles.jsx'
 
 
-const CartItem = ({item: {id, name, imageUrl, quantity, price}}) => (
+export const CartItem = ({item: {id, name, imageUrl, quantity, price}}) => (
     <CartItemContainer>
         <img src={imageUrl} alt="item" />
         <ItemDetailsContainer>
