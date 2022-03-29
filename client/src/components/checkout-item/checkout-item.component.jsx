@@ -4,7 +4,7 @@ import { clearItem, addItem, removeItem } from '../../redux/cart/cart.actions'
 
 import {CheckoutItemContainer, ImageContainer, QuantityContainer, RemoveButtonContainer, TextContainer} from './checkout-item.styles.jsx'
 
-const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) =>
+export const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) =>
 {
     const {imageUrl, name, quantity, price} = cartItem;
     
