@@ -49,6 +49,7 @@ export const AddButton = styled(CustomButton)`
       padding: 0 10px;
     }
 `;
+AddButton.displayName = 'AddButton';
 
 export const BackgroundImage = styled.div`
   z-index: 0;
@@ -60,6 +61,7 @@ export const BackgroundImage = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
   transition: 4s cubic-bezier(.17,.91,.89,.75);
 `;
+BackgroundImage.displayName = 'BackgroundImage';
 
 export const CollectionFooterContainer = styled.div`
   width: 100%;
@@ -73,13 +75,16 @@ export const CollectionFooterContainer = styled.div`
   width: 75%;
   } 
 `;
+CollectionFooterContainer.displayName = 'CollectionFooterContainer';
 
 export const NameContainer = styled.span`
   width: 90%;
   margin-bottom: 15px;
 `;
+NameContainer.displayName = 'NameContainer';
 
 export const PriceContainer = styled.span`
   width: 10%;
   text-align: right;
 `;
+PriceContainer.displayName = 'PriceContainer';

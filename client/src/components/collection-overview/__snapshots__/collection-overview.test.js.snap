@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollectionsOverview component should render collection overview 1`] = `ShallowWrapper {}`;
+
+exports[`should render CollectionsOverview component 1`] = `ShallowWrapper {}`;
