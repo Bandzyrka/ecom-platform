@@ -18,7 +18,8 @@ import styled from 'styled-components'
     color: grey;
   }
 `;
-  
+TitleContainer.displayName = 'TitleContainer';
+
   export const PreviewContainer = styled.div`
     display: flex;
     justify-content: space-between;  

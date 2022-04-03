@@ -3,7 +3,7 @@ import CollectionItem from '../collection-item/collection-item.components'
 import {CollectionPreviewContainer, TitleContainer, PreviewContainer } from './collection-preview.styles.jsx'
 import { withRouter } from 'react-router-dom';
 
-const CollectionPreview = ({title, items, history, routeName, match}) => (
+export const CollectionPreview = ({title, items, history, routeName, match}) => (
     <CollectionPreviewContainer>
         <TitleContainer onClick={() => history.push(`${match.path}/${routeName}`)}>
             {title.toUpperCase()}
