@@ -1,5 +1,5 @@
 import React,{ lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
@@ -32,16 +32,16 @@ class App extends React.Component {
       <div> 
         <GlobalStyle />
           <Header/>
-            <Switch> 
+            <Routes> 
               <ErrorBoundary>
                 <Suspense fallback={<Spinner />}>
-                  <Route exact path="/" component={HomePage} />
-                  <Route path="/shop" component={ShopPage} />
-                  <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to="/"/>) : (<SignInAndSignUp/>)} /> 
-                  <Route exact path="/checkout" component={CheckoutPage} />
+                  <Route exact path="/" element={HomePage} />
+                  <Route path="/shop" element={ShopPage} />
+                  <Route exact path="/signin" render={() => this.props.currentUser ? (<Navigate to="/"/>) : (<SignInAndSignUp/>)} /> 
+                  <Route exact path="/checkout" element={CheckoutPage} />
                 </Suspense>
               </ErrorBoundary>  
-            </Switch>
+            </Routes>
         </div>
     );
   }
