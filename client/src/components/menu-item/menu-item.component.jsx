@@ -1,18 +1,19 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import {MenuItemContainer, BackgroundImageContainer, ConentContainer, TitleContainer, SubtitleContainer} from './menu-item.styles.jsx'
 
-const MenuItem = ({ title, imageUrl, size, history, linkUrl, match}) => (
+const MenuItem = ({ title, imageUrl, size, history, linkUrl, match}) => {
+    let navigate = useNavigate();
+    return(
     <MenuItemContainer 
         size={size}  
-        onClick={() => history.push(`${match.url}${linkUrl}`)}
-    > 
+        onClick={() => navigate(`${match.url}${linkUrl}`)}
+        > 
         <BackgroundImageContainer 
         className = 'background-image' 
         imageUrl = {imageUrl} 
         />
-        
         <ConentContainer className='content'> 
             <TitleContainer>  
                 {title.toUpperCase()} 
@@ -24,6 +25,6 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match}) => (
         </ConentContainer>
     
         </MenuItemContainer>
-    )
+    )}
 
-export default withRouter(MenuItem);
+export default MenuItem;

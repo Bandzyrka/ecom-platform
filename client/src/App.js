@@ -32,16 +32,16 @@ class App extends React.Component {
       <div> 
         <GlobalStyle />
           <Header/>
-            <Routes> 
-              <ErrorBoundary>
-                <Suspense fallback={<Spinner />}>
-                  <Route exact path="/" element={HomePage} />
-                  <Route path="/shop" element={ShopPage} />
+           <ErrorBoundary>
+              <Suspense fallback={<Spinner />}>
+                <Routes> 
+                  <Route exact path="/" element={<HomePage />} />
+                  <Route path="/shop" element={<ShopPage />} />
                   <Route exact path="/signin" render={() => this.props.currentUser ? (<Navigate to="/"/>) : (<SignInAndSignUp/>)} /> 
-                  <Route exact path="/checkout" element={CheckoutPage} />
-                </Suspense>
-              </ErrorBoundary>  
-            </Routes>
+                  <Route exact path="/checkout" element={<CheckoutPage />} />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
         </div>
     );
   }

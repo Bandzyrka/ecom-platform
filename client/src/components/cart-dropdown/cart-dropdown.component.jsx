@@ -3,15 +3,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {selectCartItems} from '../../redux/cart/cart.selectors'
 
-import { withRouter }from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 import { toggleCartHidden } from '../../redux/cart/cart.actions.js'
 import CartItem from '../cart-item/cart-item.component'
 import {CartDropdownContainer, CartDropdownItems, CheckoutButton, EmptyMessage} from './cart-dropdown.styles.jsx'
 
 
-export const CartDropdown = ({ cartItems, history, dispatch }) =>
-(
+export const CartDropdown = ({ cartItems, history, dispatch }) =>{
+    let navigate = useNavigate();
+    return(
     <CartDropdownContainer>
         {
         cartItems.length ?
@@ -25,12 +26,12 @@ export const CartDropdown = ({ cartItems, history, dispatch }) =>
         : <EmptyMessage> Your cart is empty </EmptyMessage>
         }
         <CheckoutButton onClick={() => {
-                history.push('/checkout')
+                navigate('/checkout')
                 dispatch(toggleCartHidden())
             }}> 
             Go to Checkout 
         </CheckoutButton>
     </CartDropdownContainer>
-)
+)}
 const mapStateToProps = state => ({cartItems: selectCartItems(state)})
-export default withRouter(connect(mapStateToProps)(CartDropdown));
+export default connect(mapStateToProps)(CartDropdown);
