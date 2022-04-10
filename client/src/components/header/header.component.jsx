@@ -5,8 +5,10 @@ import CartIcon from '../shopping-icon/shopping-icon.compnent'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { signOutStart } from '../../redux/user/user.actions';
 import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles.jsx'
+import { Outlet } from 'react-router-dom';
 
 const Header = ({currentUser, hidden, signOutStart}) => ( 
+    <>
     <HeaderContainer>
         <LogoContainer to='/'> 
             <Logo/> 
@@ -30,7 +32,9 @@ const Header = ({currentUser, hidden, signOutStart}) => (
             : <CartDropdown />
         }
     </HeaderContainer>
-)
+    <Outlet />
+    </>
+    )
 const mapStateToProps = ({user: { currentUser }, cart: {hidden}}) => ({
     currentUser,
     hidden

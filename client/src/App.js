@@ -31,18 +31,19 @@ class App extends React.Component {
     return (
       <div> 
         <GlobalStyle />
-          <Header/>
            <ErrorBoundary>
               <Suspense fallback={<Spinner />}>
                 <Routes> 
-                  <Route exact path="/" element={<HomePage />} />
-                  <Route path="/shop" element={<ShopPage />} />
-                  <Route exact path="/signin" render={() => this.props.currentUser ? (<Navigate to="/"/>) : (<SignInAndSignUp/>)} /> 
-                  <Route exact path="/checkout" element={<CheckoutPage />} />
+                  <Route path="/" element={<Header />}>                
+                    <Route index element={<HomePage />} />
+                    <Route path="/shop" element={<ShopPage />} />
+                    <Route path="/signin" render={() => this.props.currentUser ? (<Navigate to="/"/>) : (<SignInAndSignUp/>)} /> 
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                  </Route>
                 </Routes>
               </Suspense>
             </ErrorBoundary>
-        </div>
+      </div>
     );
   }
 } 

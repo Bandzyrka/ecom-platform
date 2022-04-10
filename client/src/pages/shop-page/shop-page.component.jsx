@@ -25,11 +25,11 @@ export class ShopPage extends React.Component {
                 <Suspense fallback={ <Spinner />}> 
                     <Route 
                         exact path={`${match.path}`} 
-                        component={CollectionOverviewContainer}
+                        element={<CollectionOverviewContainer />}
                     />
                     <Route  
                         path={`${match.path}/:collectionId`} 
-                        component={CollectionPageContainer}
+                        component={<CollectionPageContainer />}
                     />
                 </Suspense>
             </ErrorBoundary>
