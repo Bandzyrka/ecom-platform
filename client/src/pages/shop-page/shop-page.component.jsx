@@ -1,6 +1,6 @@
 import React, {lazy, Suspense} from 'react';
 
-import { Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCollectionsStart } from '../../redux/shop/shop.actions'
 
@@ -18,19 +18,14 @@ export class ShopPage extends React.Component {
         fetchCollectionsStart()
         }
     render(){
-        const { match } = this.props;
         return (
             <ShopPageContainer>
             <ErrorBoundary>
                 <Suspense fallback={ <Spinner />}> 
-                    <Route 
-                        exact path={`${match.path}`} 
-                        component={CollectionOverviewContainer}
-                    />
-                    <Route  
-                        path={`${match.path}/:collectionId`} 
-                        component={CollectionPageContainer}
-                    />
+                    <Routes>
+                        <Route index element={<CollectionOverviewContainer />} />
+                        <Route path=':category' element={<CollectionPageContainer />} />
+                    </Routes>
                 </Suspense>
             </ErrorBoundary>
             </ShopPageContainer>
