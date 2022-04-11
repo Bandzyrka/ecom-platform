@@ -36,6 +36,7 @@ export const CartDropdownItems = styled.div`
 
 export const CheckoutButton = styled(CustomButton)`
   margin-top: auto;
+  padding: 0;
   `
 CheckoutButton.displayName = 'CartDropdownButton';
 
