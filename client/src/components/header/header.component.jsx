@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { ReactComponent as Logo } from '../../assets/086 crown.svg'
 import { connect } from 'react-redux'
 import CartIcon from '../shopping-icon/shopping-icon.compnent'
@@ -8,20 +8,20 @@ import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './he
 import { Outlet } from 'react-router-dom';
 
 const Header = ({currentUser, hidden, signOutStart}) => ( 
-    <>
+    <Fragment>
     <HeaderContainer>
         <LogoContainer to='/'> 
             <Logo/> 
         </LogoContainer>
         
         <OptionsContainer>
-            <OptionLink to='/shop'> SHOP </OptionLink>
+            <OptionLink to='shop'> SHOP </OptionLink>
             <OptionLink to='/'> CONTACT </OptionLink>
             {
                 currentUser ?
                 <OptionLink as='div' onClick={signOutStart}> SIGN OUT </OptionLink> 
                 :
-                <OptionLink to='/signin'> SIGN IN </OptionLink> 
+                <OptionLink to='signin'> SIGN IN </OptionLink> 
             }
             <CartIcon />
         </OptionsContainer>
@@ -33,7 +33,7 @@ const Header = ({currentUser, hidden, signOutStart}) => (
         }
     </HeaderContainer>
     <Outlet />
-    </>
+    </Fragment>
     )
 const mapStateToProps = ({user: { currentUser }, cart: {hidden}}) => ({
     currentUser,

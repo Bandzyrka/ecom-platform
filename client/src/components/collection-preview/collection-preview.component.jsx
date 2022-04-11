@@ -3,12 +3,11 @@ import CollectionItem from '../collection-item/collection-item.components'
 import {CollectionPreviewContainer, TitleContainer, PreviewContainer } from './collection-preview.styles.jsx'
 import { useNavigate } from "react-router-dom";
 
-export const CollectionPreview = ({title, items, history, routeName, match}) => {
+export const CollectionPreview = ({title, items, routeName,}) => {
     let navigate = useNavigate();
-
     return(
     <CollectionPreviewContainer>
-        <TitleContainer onClick={() => navigate(`${match.path}/${routeName}`)}>
+        <TitleContainer onClick={() => navigate(`${routeName}`)}>
             {title.toUpperCase()}
         </TitleContainer>
         <PreviewContainer>
