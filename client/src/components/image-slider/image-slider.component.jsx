@@ -25,11 +25,17 @@ const slidesReducer = (state, action) => {
 }
 
 const Slide = ({slideData: {title, image}, offset}) => {
-    
+    const active = offset === 0 ? true: null;
+    const direction = offset === 0 ? 0 : (offset > 0 ? 1 : -1)
     return (
-        <SlideContainer offset={offset} image={image}>  
-        {title}
-        {offset}
+        <SlideContainer 
+            offset={offset} 
+            image={image} 
+            active={active} 
+            direction={direction}
+            >
+            {title}
+            {offset}    
         </SlideContainer>
     )
 }
@@ -42,9 +48,13 @@ const ImageSlider = () => {
     <ImageSliderContainer>
         <SlidesContainer>
         {
-            slidesData.map((slide, i) => {
+            [...slidesData, ...slidesData, ...slidesData].map((slide, i) => {
+                let offset = slidesData.length + (slideIndex - i);
                 return(
-                    <Slide slideData={slide} offset={slideIndex -i}/>
+                    <Slide 
+                        slideData={slide} 
+                        offset={offset}
+                        />
                     )
                 })
             }
