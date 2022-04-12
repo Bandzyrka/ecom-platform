@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import { slidesData } from './slides-data'
-import { SlidesContainer, ImageSliderContainer, SlideContainer } from './image-slider.styles'
+import { SlideContent, SlidesContainer, ImageSliderContainer, SlideContainer } from './image-slider.styles'
 const initialState = {
     slideIndex: 0,
 }
@@ -24,7 +24,7 @@ const slidesReducer = (state, action) => {
     }
 }
 
-const Slide = ({slideData: {title, image}, offset}) => {
+const Slide = ({slideData: {title, subtitle, description, image}, offset}) => {
     const active = offset === 0 ? true: null;
     const direction = offset === 0 ? 0 : (offset > 0 ? 1 : -1)
     return (
@@ -34,8 +34,11 @@ const Slide = ({slideData: {title, image}, offset}) => {
             active={active} 
             direction={direction}
             >
-            {title}
-            {offset}    
+            <SlideContent className="slide-content">
+                <h2> {title} </h2>
+                <h3> {subtitle} </h3>
+                <p> {description} </p> 
+            </SlideContent>
         </SlideContainer>
     )
 }
@@ -58,9 +61,9 @@ const ImageSlider = () => {
                     )
                 })
             }
+            <button onClick={() => dispatch({ type: "NEXT_SLIDE" })}> ‹ </button>
+            <button onClick={() => dispatch({ type: "PREV_SLIDE" })}> › </button>
         </SlidesContainer>
-        <button onClick={() => dispatch({ type: "NEXT_SLIDE" })}> NEXT </button>
-        <button onClick={() => dispatch({ type: "PREV_SLIDE" })}> PREV </button>
     </ImageSliderContainer>
   )
 }
