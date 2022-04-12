@@ -36,12 +36,14 @@ export const SlidesContainer = styled.div`
 `
 export const ImageSliderContainer = styled.div`
     margin: 4rem;
+    
  
 `
 export const SlideContainer = styled.div`
     width: 35vw;
-    height: 50vh;
+    height: 60vh;
     padding: 2rem;
+    background-position: center center;
     grid-area: 1 / -1;
     background-image: url(${props => props.image});
     background-size: cover;
@@ -49,12 +51,25 @@ export const SlideContainer = styled.div`
     transition: 0.5s ease-in-out;
     transform: translateX( calc(100% * ${props => props.offset})) rotateY(calc(-25deg * ${props => props.direction}));
     align-content: center;
+    cursor: pointer;
     ${({active}) => active && `
+        :hover{
+        transform: scale(1.1);
+
+        }
         .slide-content{
             opacity: 1;
-            
+        
         }
     `}
+    
+    @media screen and (max-width: 800px){
+        transform: translateX( calc(100% * ${props => props.offset})) rotateY(calc(-25deg * ${props => props.direction}));
+        width: 100%;
+        height: 300px;
+        background-position:center center;
+        box-shadow: unset;
+    }
 `
 export const SlideContent = styled.div`
   transition: opacity 1.3s linear;
@@ -78,5 +93,16 @@ export const SlideContent = styled.div`
     margin: 0;
     font-size: 1rem;
     letter-spacing: 0.2ch;
+  }
+  @media screen and (max-width: 800px){
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 15px;
+    }
+    p{
+        font-size: 15px
+    }
   }
 `

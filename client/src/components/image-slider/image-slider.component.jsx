@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react'
+import { useInterval } from 'usehooks-ts'
+import { useNavigate} from 'react-router-dom'
 import { slidesData } from './slides-data'
 import { SlideContent, SlidesContainer, ImageSliderContainer, SlideContainer } from './image-slider.styles'
 const initialState = {
@@ -27,8 +29,10 @@ const slidesReducer = (state, action) => {
 const Slide = ({slideData: {title, subtitle, description, image}, offset}) => {
     const active = offset === 0 ? true: null;
     const direction = offset === 0 ? 0 : (offset > 0 ? 1 : -1)
+    let navigate = useNavigate();
     return (
-        <SlideContainer 
+        <SlideContainer
+            onClick = {() => navigate('/shop')} 
             offset={offset} 
             image={image} 
             active={active} 
@@ -47,6 +51,12 @@ const Slide = ({slideData: {title, subtitle, description, image}, offset}) => {
 const ImageSlider = () => {
   const [state, dispatch] = useReducer(slidesReducer, initialState)
   const {slideIndex} = state
+  useInterval(
+    () => {
+      dispatch({ type: "PREV_SLIDE" })
+    },
+    4000
+  )
   return (
     <ImageSliderContainer>
         <SlidesContainer>

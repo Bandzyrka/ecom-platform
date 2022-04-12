@@ -9,13 +9,13 @@ export const slidesData = [
         title: 'Mid Season ',
         subtitle: 'Sale',
         description: 'up to 50% off ',
-        image: 'https://focusbydgoszcz.pl/assets/uploads/2020/05/311590760300986399.png'
+        image: 'https://images.unsplash.com/photo-1572495641004-28421ae52e52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
     },
     {
         title: 'Premium',
         subtitle: 'Classics',
         description: 'Check Collection',
-        image: 'https://businessesgrow.com/wp-content/uploads/2019/05/Screen-Shot-2019-05-14-at-11.34.23-AM-1024x730.png'
+        image: 'https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80'
     }
 
 ]
