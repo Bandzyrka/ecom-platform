@@ -7,7 +7,7 @@ import { signOutStart } from '../../redux/user/user.actions';
 import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles.jsx'
 import { Outlet } from 'react-router-dom';
 
-const Header = ({currentUser, hidden, signOutStart}) => ( 
+export const Header = ({currentUser, hidden, signOutStart}) => ( 
     <Fragment>
     <HeaderContainer>
         <LogoContainer to='/'> 
