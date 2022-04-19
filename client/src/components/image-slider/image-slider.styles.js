@@ -35,8 +35,10 @@ export const SlidesContainer = styled.div`
 }
 `
 export const ImageSliderContainer = styled.div`
-    margin: 4rem;
-    
+    margin: 2rem;
+    @media screen and (max-width: 800px) {
+      margin: 0;
+    }
  
 `
 export const SlideContainer = styled.div`

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MenuItemContainer = styled.div`
-    height: ${({ size }) => (size ? '880px' : '600px')};
+    height: ${({ size }) => (size ? '480px' : '300px')};
     min-width: 30%;
     flex: 1 1 auto;
     display: flex;
@@ -55,15 +55,28 @@ export const ConentContainer = styled.div`
       background-color: azure;
       opacity: 0.75;
       position: absolute;
+      @media screen and (max-width: 800px) {
+          height: 60px;
+          
+      }
       `
 export const TitleContainer = styled.h1`
       font-weight: bold;
       margin-bottom: 6px;
       font-size: 20px;
       color: black;
+      @media screen and (max-width: 800px) {
+        font-size: 15px
+
+          
+      }
       `
       
 export const SubtitleContainer = styled.span`
       font-weight: lighter;
       font-size: 16px;
+      @media screen and (max-width: 800px) {
+          font-size: 12px
+          
+      }
       `
