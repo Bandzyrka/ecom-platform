@@ -41,7 +41,7 @@ export const ImageSliderContainer = styled.div`
 `
 export const SlideContainer = styled.div`
     width: 35vw;
-    height: 60vh;
+    height: 50vh;
     padding: 2rem;
     background-position: center center;
     grid-area: 1 / -1;
@@ -51,6 +51,7 @@ export const SlideContainer = styled.div`
     transition: 0.5s ease-in-out;
     transform: translateX( calc(100% * ${props => props.offset})) rotateY(calc(-25deg * ${props => props.direction}));
     align-content: center;
+    margin-bottom: 5rem;
     cursor: pointer;
     ${({active}) => active && `
         :hover{

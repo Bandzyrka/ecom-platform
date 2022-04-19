@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MenuItemContainer = styled.div`
-    height: ${({ size }) => (size ? '480px' : '300px')};
+    height: ${({ size }) => (size ? '880px' : '600px')};
     min-width: 30%;
     flex: 1 1 auto;
     display: flex;

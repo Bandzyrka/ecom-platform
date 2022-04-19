@@ -9,23 +9,21 @@ import { Outlet } from 'react-router-dom';
 
 export const Header = ({currentUser, hidden, signOutStart}) => ( 
     <Fragment>
-    <HeaderContainer>
-        <LogoContainer to='/'> 
-            <Logo/> 
-        </LogoContainer>
-        
+    <HeaderContainer>      
         <OptionsContainer>
-            <OptionLink to='shop'> SHOP </OptionLink>
-            <OptionLink to='/'> CONTACT </OptionLink>
-            {
-                currentUser ?
-                <OptionLink as='div' onClick={signOutStart}> SIGN OUT </OptionLink> 
-                :
-                <OptionLink to='signin'> SIGN IN </OptionLink> 
-            }
-            <CartIcon />
-        </OptionsContainer>
-            
+        {
+            currentUser ?
+            <OptionLink as='div' onClick={signOutStart}> SIGN OUT </OptionLink> 
+            :
+            <OptionLink to='signin'> SIGN IN </OptionLink> 
+        }
+            <LogoContainer to='/'> 
+                <Logo/> 
+            </LogoContainer>
+        
+                <OptionLink to='shop'> SHOP </OptionLink>
+            </OptionsContainer>
+        <CartIcon />
         {
             hidden ?
             null

@@ -1,22 +1,23 @@
 import styled from 'styled-components'
 
 export const CartIconContainer = styled.div`
-    width: 45px;
-    height: 45px;
+    width: 34px;
+    height: 34px;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     cursor: pointer;
+    margin-top: 2px;
 `
 export const  ShoppingIconContainer = styled.div`
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
 `    
 export const ItemCounter = styled.span`
       position: absolute;
-      font-size: 10px;
+      font-size: 15px;
       font-weight: bold;
-      bottom: 12px; 
+      bottom: 3px; 
   `
   
