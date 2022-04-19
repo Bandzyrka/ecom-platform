@@ -40,8 +40,8 @@ export const ImageSliderContainer = styled.div`
  
 `
 export const SlideContainer = styled.div`
-    width: 35vw;
-    height: 50vh;
+    width: 550px;
+    height: 600px;
     padding: 2rem;
     background-position: center center;
     grid-area: 1 / -1;
@@ -63,13 +63,27 @@ export const SlideContainer = styled.div`
         
         }
     `}
-    
-    @media screen and (max-width: 800px){
-        transform: translateX( calc(100% * ${props => props.offset})) rotateY(calc(-25deg * ${props => props.direction}));
-        width: 100%;
+    @media screen and (max-width: 1400px){
+        width: 400px;
+        height: 500px;
+    }
+    @media screen and (max-width: 1000px){
+        width: 300px;
+        height: 400px;
+        margin-bottom: 4rem;
+
+    }
+    @media screen and (max-width: 650px){
+        width: 250px;
         height: 300px;
-        background-position:center center;
-        box-shadow: unset;
+        margin-bottom: 3rem;
+
+    }
+    @media screen and (max-width: 450px){
+        width: 200px;
+        height: 300px;
+        margin-bottom: 1rem;
+
     }
 `
 export const SlideContent = styled.div`
