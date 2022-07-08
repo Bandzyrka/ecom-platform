@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
+import { CollectionsState } from './shop.reducer';
+import { CollectionMap } from './shop.types'
 
-const selectShop = state => state.shop;
+const selectShop = (state): CollectionsState => state.shop;
 
 export const selectCollections = createSelector(
   [selectShop],
@@ -9,11 +11,15 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
-  collections =>
-    collections ? Object.keys(collections).map(key => collections[key]) : []
+  (collections): CollectionMap =>
+    collections.reduce((acc, collection) => {
+      const {title, items} = collection;
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {} as CollectionMap)
 );
 
-export const selectCollection = collectionUrlParam =>
+export const selectCollection = (collectionUrlParam: string) =>
   createSelector(
     [selectCollections],
     collections => (collections ? collections[collectionUrlParam] : null)

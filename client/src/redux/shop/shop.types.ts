@@ -14,3 +14,6 @@ export type Collection = {
     imageUrl: string;
     items: CollectionItem[];
 }
+export type CollectionMap = {
+    [key: string]: CollectionItem[]
+}
