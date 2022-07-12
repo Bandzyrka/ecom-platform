@@ -1,10 +1,9 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-
-
+import {User} from 'firebase/auth'
+import {DocumentData, DocumentSnapshot} from 'firebase/firestore'
+import { Collection } from '../redux/shop/shop.types';
 const config = {
   apiKey: "AIzaSyCF-1vmRYeLDRFt6MwHQnXozw5wEYKtIEA",
   authDomain: "ecom-d479d.firebaseapp.com",
@@ -15,17 +14,28 @@ const config = {
   measurementId: "G-7Q8VW6KQLB"
 };
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export type AdditionalData = {
+  displayName?: string;
+}
+export type UserData = {
+  createdAt: Date;
+  displayName: string;
+  email: string;
+}
+
+export const createUserProfileDocument = async (
+  userAuth: User, 
+  additionalData = {} as AdditionalData): Promise<void | DocumentData> => 
+  {
   if(!userAuth) return;
   
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
-  const snapShot = await userRef.get();
+  const userSnapshot = await userRef.get();
 
-  if(!snapShot.exists){
+  if(!userSnapshot.exists){
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
     try{
       await userRef.set({
         displayName,
@@ -34,25 +44,32 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData
       })
     } catch( error){
-      console.log("Error creating user, ", error.message)
+      console.log("Error creating user, ", error)
     }
   }
-  return userRef;
+  return userSnapshot as DocumentData;
 }
 
 firebase.initializeApp(config);
 
-export const getCurrentUser = () => {
+export const getCurrentUser = (): Promise<User | unknown> => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       unsubscribe();
       resolve(userAuth);
     }, reject);
   });
 };
 
+export type ObjectToAdd = { 
+  title: string;
+}
 
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async <T extends ObjectToAdd> (
+  collectionKey: string,
+  objectsToAdd: T[]
+  ): Promise<void> => 
+  {
   const collectionRef = firestore.collection(collectionKey);
 
   const batch = firestore.batch()
@@ -65,7 +82,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   return await batch.commit()
 }
 
-export const convertCollectionsSnapshotToMap = collections => {
+export const convertCollectionsSnapshotToMap = (collections): Collection[] => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
 

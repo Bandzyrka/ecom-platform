@@ -1,10 +1,10 @@
-import { COLLECTIONS_ACTION_TYPES, Collection } from "./shop.types.js";
+import { COLLECTIONS_ACTION_TYPES, Collection } from "./shop.types";
 import {
   createAction,
   Action,
   ActionWithPayload,
+  withMatcher
 } from "../../utils/reducer/reducer.utils.js";
-import { withMatcher } from "../../utils/reducer/reducer.utils";
 
 export type FetchCollectionsStart =
   Action<COLLECTIONS_ACTION_TYPES.FETCH_COLLECTIONS_START>;
