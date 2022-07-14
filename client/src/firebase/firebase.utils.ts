@@ -1,9 +1,9 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import {User} from 'firebase/auth'
-import {DocumentData, DocumentSnapshot} from 'firebase/firestore'
-import { Collection } from '../redux/shop/shop.types';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import { User } from "firebase/auth";
+import { DocumentData } from "firebase/firestore";
+import { Collection } from "../redux/shop/shop.types";
 const config = {
   apiKey: "AIzaSyCF-1vmRYeLDRFt6MwHQnXozw5wEYKtIEA",
   authDomain: "ecom-d479d.firebaseapp.com",
@@ -11,44 +11,44 @@ const config = {
   storageBucket: "ecom-d479d.appspot.com",
   messagingSenderId: "1095869390094",
   appId: "1:1095869390094:web:700d186e71e4f86ad3cb5f",
-  measurementId: "G-7Q8VW6KQLB"
+  measurementId: "G-7Q8VW6KQLB",
 };
 
 export type AdditionalData = {
   displayName?: string;
-}
+};
 export type UserData = {
   createdAt: Date;
   displayName: string;
   email: string;
-}
+};
 
 export const createUserProfileDocument = async (
-  userAuth: User, 
-  additionalData = {} as AdditionalData): Promise<void | DocumentData> => 
-  {
-  if(!userAuth) return;
-  
+  userAuth: User,
+  additionalData = {} as AdditionalData
+): Promise<void | DocumentData> => {
+  if (!userAuth) return;
+
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
   const userSnapshot = await userRef.get();
 
-  if(!userSnapshot.exists){
+  if (!userSnapshot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-    try{
+    try {
       await userRef.set({
         displayName,
         email,
         createdAt,
-        ...additionalData
-      })
-    } catch( error){
-      console.log("Error creating user, ", error)
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log("Error creating user, ", error);
     }
   }
   return userSnapshot as DocumentData;
-}
+};
 
 firebase.initializeApp(config);
 
@@ -61,36 +61,35 @@ export const getCurrentUser = (): Promise<User | unknown> => {
   });
 };
 
-export type ObjectToAdd = { 
+export type ObjectToAdd = {
   title: string;
-}
+};
 
-export const addCollectionAndDocuments = async <T extends ObjectToAdd> (
+export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
   collectionKey: string,
   objectsToAdd: T[]
-  ): Promise<void> => 
-  {
+): Promise<void> => {
   const collectionRef = firestore.collection(collectionKey);
 
-  const batch = firestore.batch()
-  
-  objectsToAdd.forEach( (obj) =>{
-    const newDocRef = collectionRef.doc()
-    batch.set(newDocRef, obj);
-  })
+  const batch = firestore.batch();
 
-  return await batch.commit()
-}
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
 
 export const convertCollectionsSnapshotToMap = (collections): Collection[] => {
-  const transformedCollection = collections.docs.map(doc => {
+  const transformedCollection = collections.docs.map((doc) => {
     const { title, items } = doc.data();
 
     return {
       routeName: encodeURI(title.toLowerCase()),
       id: doc.id,
       title,
-      items
+      items,
     };
   });
 
@@ -104,7 +103,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: 'select_account' });
+googleProvider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
