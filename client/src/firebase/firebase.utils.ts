@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { User } from "firebase/auth";
+import { User, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { DocumentData } from "firebase/firestore";
 import { Collection } from "../redux/shop/shop.types";
 const config = {
@@ -52,9 +52,9 @@ export const createUserProfileDocument = async (
 
 firebase.initializeApp(config);
 
-export const getCurrentUser = (): Promise<User | unknown> => {
+export const getCurrentUser = (): Promise<User | null> => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+    const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
       unsubscribe();
       resolve(userAuth);
     }, reject);
@@ -99,6 +99,14 @@ export const convertCollectionsSnapshotToMap = (collections): Collection[] => {
   }, {});
 };
 
+export const signInAuthUserWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
+};
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

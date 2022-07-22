@@ -3,9 +3,10 @@ import {
   Action,
   ActionWithPayload,
   withMatcher,
+  AdditionalData
 } from "../../utils/reducer/reducer.utils";
 import { UserData } from "../../firebase/firebase.utils";
-
+import {User} from 'firebase/auth'
 export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>;
 export const googleSignInStart = withMatcher(
   (): GoogleSignInStart => ({
@@ -18,7 +19,7 @@ export type SignInSuccess = ActionWithPayload<
   UserData
 >;
 export const signInSuccess = withMatcher(
-  (user: UserData): SignInSuccess => ({
+  (user: UserData & { id: string}): SignInSuccess => ({
     type: USER_ACTION_TYPES.SIGN_IN_SUCCESS,
     payload: user,
   })
@@ -100,13 +101,14 @@ export const signUpStart = withMatcher((userCredentials: UserCredentials) => ({
 
 export type SignUpSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_SUCCESS,
-  UserData
+  {user: User, additionalData: AdditionalData}
 >;
 export const signUpSuccess = withMatcher(
-  (user: UserData): SignUpSuccess => ({
-    type: USER_ACTION_TYPES.SIGN_UP_SUCCESS,
-    payload: user,
-  })
+  (user: User, additionalData: AdditionalData): SignUpSuccess =>
+    ({
+      type: USER_ACTION_TYPES.SIGN_UP_SUCCESS, 
+      payload:  { user, additionalData }
+    })
 );
 export type SignUpFailure = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_FAILURE,
