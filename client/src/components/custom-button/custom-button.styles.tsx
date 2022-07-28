@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
-const getButtonStyles = props => {
+const getButtonStyles = (props): FlattenSimpleInterpolation  => {
   switch (props.styles) {
     case 'googleButtonStyle':
       return googleButtonStyle
@@ -26,7 +26,7 @@ export const CustomButtonContainer = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
-  ${getButtonStyles}
+  ${getButtonStyles};
   @media screen and (max-width: 800px) {
     padding: 0 15px;
   }
