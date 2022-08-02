@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import CartIcon from '../shopping-icon/shopping-icon.compnent'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { signOutStart } from '../../redux/user/user.actions';
-import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles.jsx'
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles'
 import { Outlet } from 'react-router-dom';
 
 export const Header = ({currentUser, hidden, signOutStart}) => ( 

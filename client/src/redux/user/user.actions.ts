@@ -3,7 +3,7 @@ import {
   Action,
   ActionWithPayload,
   withMatcher,
-  AdditionalData
+  
 } from "../../utils/reducer/reducer.utils";
 import { UserData } from "../../firebase/firebase.utils";
 import {User} from 'firebase/auth'
@@ -13,6 +13,10 @@ export const googleSignInStart = withMatcher(
     type: USER_ACTION_TYPES.GOOGLE_SIGN_IN_START,
   })
 );
+
+export type AdditionalData = {
+  displayName?: string;
+};
 
 export type SignInSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_IN_SUCCESS,
@@ -53,6 +57,7 @@ export const emailSignInStart = withMatcher(
 );
 
 export type CheckUserSession = Action<USER_ACTION_TYPES.CHECK_USER_SESSION>;
+
 export const checkUserSession = withMatcher(
   (): CheckUserSession => ({
     type: USER_ACTION_TYPES.CHECK_USER_SESSION,

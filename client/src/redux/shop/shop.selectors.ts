@@ -11,8 +11,8 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
-  (collections): CollectionMap =>
-    collections.reduce((acc, collection) => {
+  (collections): CollectionMap => 
+   Object.values(collections).reduce((acc, collection) => {
       const {title, items} = collection;
       acc[title.toLowerCase()] = items;
       return acc;

@@ -20,7 +20,8 @@ import {
   createUserProfileDocument,
   getCurrentUser,
   AdditionalData,
-  signInAuthUserWithEmailAndPassword
+  signInAuthUserWithEmailAndPassword,
+  signOutUser
 } from "../../firebase/firebase.utils";
 
 export function* getSnapshotFromUserAuth(userAuth: User, additionalData?  : AdditionalData) {
@@ -74,7 +75,7 @@ export function* isUserAuthenticated() {
 
 export function* signOut() {
   try {
-    yield* call(auth.signOut);
+    yield* call(signOutUser);
     yield* put(signOutSuccess());
   } catch (error) {
     yield* put(signOutFailure(error as Error));

@@ -1,9 +1,10 @@
 import React from 'react';
 import CollectionItem from '../collection-item/collection-item.components'
-import {CollectionPreviewContainer, TitleContainer, PreviewContainer } from './collection-preview.styles.jsx'
+import {CollectionPreviewContainer, TitleContainer, PreviewContainer } from './collection-preview.styles'
 import { useNavigate } from "react-router-dom";
 
 export const CollectionPreview = ({title, items, routeName,}) => {
+    console.log(title, items)
     let navigate = useNavigate();
     return(
     <CollectionPreviewContainer>

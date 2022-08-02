@@ -1,4 +1,4 @@
-import { all, call } from 'redux-saga/effects'
+import { call, all } from "typed-redux-saga";
 
 import { shopSagas } from './shop/shop.sagas'
 import { userSagas } from './user/user.sagas'

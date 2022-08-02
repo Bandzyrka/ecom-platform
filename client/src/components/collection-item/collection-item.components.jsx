@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addItem } from '../../redux/cart/cart.actions.js'
+import { addItem } from '../../redux/cart/cart.actions'
 
 import {
     CollectionItemContainer,
@@ -9,7 +9,7 @@ import {
     BackgroundImage,
     NameContainer,
     PriceContainer
-  } from './collection-item.styles.jsx';
+  } from './collection-item.styles';
 
 export const CollectionItem = ({item, addItem}) => {
     const {id, imageUrl, name, price} = item;

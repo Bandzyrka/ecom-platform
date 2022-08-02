@@ -5,7 +5,7 @@ import {selectCartItems} from '../../redux/cart/cart.selectors'
 
 import { useNavigate } from "react-router-dom";
 
-import { toggleCartHidden } from '../../redux/cart/cart.actions.js'
+import { toggleCartHidden } from '../../redux/cart/cart.actions'
 import CartItem from '../cart-item/cart-item.component'
 import {CartDropdownContainer, CartDropdownItems, CheckoutButton, EmptyMessage} from './cart-dropdown.styles.jsx'
 

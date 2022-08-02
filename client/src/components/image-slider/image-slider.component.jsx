@@ -67,6 +67,7 @@ const ImageSlider = () => {
                     <Slide 
                         slideData={slide} 
                         offset={offset}
+                        key={i}
                         />
                     )
                 })

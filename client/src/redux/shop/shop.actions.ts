@@ -4,7 +4,7 @@ import {
   Action,
   ActionWithPayload,
   withMatcher
-} from "../../utils/reducer/reducer.utils.js";
+} from "../../utils/reducer/reducer.utils";
 
 export type FetchCollectionsStart =
   Action<COLLECTIONS_ACTION_TYPES.FETCH_COLLECTIONS_START>;

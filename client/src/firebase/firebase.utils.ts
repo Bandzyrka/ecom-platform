@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { User, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { User, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { DocumentData } from "firebase/firestore";
 import { Collection } from "../redux/shop/shop.types";
 const config = {
@@ -80,6 +80,8 @@ export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
 
   return await batch.commit();
 };
+
+export const signOutUser = async () => await signOut(auth)
 
 export const convertCollectionsSnapshotToMap = (collections): Collection[] => {
   const transformedCollection = collections.docs.map((doc) => {

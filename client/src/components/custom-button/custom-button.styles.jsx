@@ -1,6 +1,6 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import styled, { css, } from 'styled-components'
 
-const getButtonStyles = (props): FlattenSimpleInterpolation  => {
+const getButtonStyles = (props)  => {
   switch (props.styles) {
     case 'googleButtonStyle':
       return googleButtonStyle
