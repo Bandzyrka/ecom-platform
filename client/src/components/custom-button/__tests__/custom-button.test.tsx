@@ -1,8 +1,6 @@
 import {CustomButton} from '../custom-button.component';
 import { render, screen } from '@testing-library/react';
-import React from 'react';
 import '@testing-library/jest-dom'
-
 
 describe('CustomButton tests', () => {
   test('should render button', () => {
