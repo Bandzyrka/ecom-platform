@@ -1,16 +1,15 @@
-/* eslint-disable no-dupe-keys */
 import { AnyAction } from "redux";
 
-export type Directory = {
-  title: string,
-  imageUrl: string,
-  id: number,
-  linkUrl: string,
-  size?: string,
+export type DirectoryCategory = {
+  title: string;
+  imageUrl: string;
+  id: number;
+  linkUrl: string;
+  size: string;
 };
 export type DirectoryState = {
-  sections: Directory[]
-}
+  sections: DirectoryCategory[];
+};
 
 const DIRECTORY_INITIAL_STATE: DirectoryState = {
   sections: [
@@ -19,18 +18,21 @@ const DIRECTORY_INITIAL_STATE: DirectoryState = {
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
       id: 1,
       linkUrl: "shop/hats",
+      size: "normal",
     },
     {
       title: "jackets",
       imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
       id: 2,
       linkUrl: "shop/jackets",
+      size: "normal",
     },
     {
       title: "sneakers",
       imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
       id: 3,
       linkUrl: "shop/sneakers",
+      size: "normal",
     },
     {
       title: "womens",
