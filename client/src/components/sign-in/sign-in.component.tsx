@@ -35,7 +35,7 @@ const SignInForm = () => {
     <SignInContainer>
       <TitleContainer > I have a account</TitleContainer>
       <span className="subtitle"> Use your email and password to sign in</span>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} role='form'>
         <FormInput
           type="email"
           name="email"
