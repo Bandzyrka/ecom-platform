@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
-import { FormInput} from "../form-input/form-input.component";
+import { FormInput } from "../form-input/form-input.component";
 import { CustomButton } from "../custom-button/custom-button.component";
 
 import { useDispatch } from "react-redux";
@@ -9,7 +9,11 @@ import {
   emailSignInStart,
 } from "../../redux/user/user.actions";
 
-import { SignInContainer, ButtonsContainer, TitleContainer } from "./sign-in.styles";
+import {
+  SignInContainer,
+  ButtonsContainer,
+  TitleContainer,
+} from "./sign-in.styles";
 
 const defaultFormFields = {
   password: "",
@@ -33,9 +37,9 @@ const SignInForm = () => {
 
   return (
     <SignInContainer>
-      <TitleContainer > I have a account</TitleContainer>
+      <TitleContainer> I have a account</TitleContainer>
       <span className="subtitle"> Use your email and password to sign in</span>
-      <form onSubmit={handleSubmit} role='form'>
+      <form onSubmit={handleSubmit} role="form">
         <FormInput
           type="email"
           name="email"

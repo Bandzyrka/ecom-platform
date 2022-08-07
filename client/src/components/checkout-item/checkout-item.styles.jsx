@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CheckoutItemContainer = styled.div`
   width: 100%;
@@ -33,24 +33,23 @@ export const QuantityContainer = styled(TextContainer)`
   display: flex;
   span {
     margin: 0 10px;
-    
   }
   div {
     cursor: pointer;
-    &:hover{
-        transform: scale(1.05);
-        transition: 0.2s
-      }
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.2s;
+    }
   }
 `;
-QuantityContainer.displayName = 'QuantityContainer';
+QuantityContainer.displayName = "QuantityContainer";
 
 export const RemoveButtonContainer = styled.div`
   padding-left: 22px;
   cursor: pointer;
-  &:hover{
-        transform: scale(1.05);
-        transition: 0.1s
-      }
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.1s;
+  }
 `;
-RemoveButtonContainer.displayName = 'RemoveButtonContainer';
+RemoveButtonContainer.displayName = "RemoveButtonContainer";
