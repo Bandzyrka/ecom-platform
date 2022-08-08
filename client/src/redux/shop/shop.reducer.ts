@@ -30,8 +30,8 @@ export const shopReducer = (
   if (fetchCollectionsSucces.match(action)) {
     return {
       ...state,
-      isCollectionFetching: false,
       collections: action.payload,
+      isCollectionFetching: false,
     };
   }
   if (fetchCollectionsFailure.match(action)) {
